@@ -1,218 +1,142 @@
 {
-  "last_node_id": 10,
-  "last_link_id": 8,
+  "last_node_id": 13,
+  "last_link_id": 13,
   "nodes": [
     {
-      "id": 3,
-      "type": "LoadImage",
+      "id": 10,
+      "type": "VHS_VideoCombine",
       "pos": [
-        465,
-        299
+        2150,
+        307
       ],
-      "size": {
-        "0": 315,
-        "1": 314
-      },
+      "size": [
+        261.79998779296875,
+        310
+      ],
       "flags": {},
-      "order": 0,
+      "order": 5,
       "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 13
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "name": "meta_batch",
+          "type": "VHS_BatchManager",
+          "link": null
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": null
+        }
+      ],
       "outputs": [
         {
-          "name": "IMAGE",
+          "name": "Filenames",
+          "type": "VHS_FILENAMES",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_VideoCombine"
+      },
+      "widgets_values": {
+        "frame_rate": 15,
+        "loop_count": 0,
+        "filename_prefix": "AnimateDiff",
+        "format": "video/h264-mp4",
+        "pix_fmt": "yuv420p",
+        "crf": 19,
+        "save_metadata": true,
+        "pingpong": false,
+        "save_output": false,
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "filename": "AnimateDiff_00003.mp4",
+            "subfolder": "",
+            "type": "temp",
+            "format": "video/h264-mp4",
+            "frame_rate": 15
+          }
+        }
+      }
+    },
+    {
+      "id": 13,
+      "type": "AdvancedLivePortrait",
+      "pos": [
+        1716,
+        311
+      ],
+      "size": [
+        403.6618515517871,
+        396.6170524540378
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "src_images",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "motion_link",
+          "type": "EDITOR_LINK",
+          "link": 11
+        },
+        {
+          "name": "driving_images",
+          "type": "IMAGE",
+          "link": 12
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
           "type": "IMAGE",
           "links": [
-            3
+            13
           ],
           "shape": 3,
           "slot_index": 0
-        },
-        {
-          "name": "MASK",
-          "type": "MASK",
-          "links": null,
-          "shape": 3,
-          "slot_index": 1
         }
       ],
       "properties": {
-        "Node name for S&R": "LoadImage"
-      },
-      "widgets_values": [
-        "source_image.png",
-        "image"
-      ]
-    },
-    {
-      "id": 6,
-      "type": "ExpressionEditor",
-      "pos": [
-        844,
-        301
-      ],
-      "size": {
-        "0": 315,
-        "1": 642
-      },
-      "flags": {},
-      "order": 2,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "src_image",
-          "type": "IMAGE",
-          "link": 3
-        },
-        {
-          "name": "motion_link",
-          "type": "EDITOR_LINK",
-          "link": null
-        },
-        {
-          "name": "sample_image",
-          "type": "IMAGE",
-          "link": null
-        },
-        {
-          "name": "add_exp",
-          "type": "EXP_DATA",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "links": null,
-          "shape": 3
-        },
-        {
-          "name": "motion_link",
-          "type": "EDITOR_LINK",
-          "links": [
-            5
-          ],
-          "shape": 3,
-          "slot_index": 1
-        },
-        {
-          "name": "save_exp",
-          "type": "EXP_DATA",
-          "links": null,
-          "shape": 3
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ExpressionEditor"
+        "Node name for S&R": "AdvancedLivePortrait"
       },
       "widgets_values": [
         0,
         0,
-        0,
-        0,
-        0,
-        0,
-        -15,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        1
-      ]
-    },
-    {
-      "id": 8,
-      "type": "ExpressionEditor",
-      "pos": [
-        1205,
-        299
-      ],
-      "size": {
-        "0": 315,
-        "1": 642
-      },
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "src_image",
-          "type": "IMAGE",
-          "link": null
-        },
-        {
-          "name": "motion_link",
-          "type": "EDITOR_LINK",
-          "link": 5
-        },
-        {
-          "name": "sample_image",
-          "type": "IMAGE",
-          "link": null
-        },
-        {
-          "name": "add_exp",
-          "type": "EXP_DATA",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "links": null,
-          "shape": 3
-        },
-        {
-          "name": "motion_link",
-          "type": "EDITOR_LINK",
-          "links": [
-            6
-          ],
-          "shape": 3,
-          "slot_index": 1
-        },
-        {
-          "name": "save_exp",
-          "type": "EXP_DATA",
-          "links": null,
-          "shape": 3
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ExpressionEditor"
-      },
-      "widgets_values": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        15,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1,
-        1
+        true,
+        "1 = 1:10\n2 = 5:10\n0 = 2:50\n1 = 2:0"
       ]
     },
     {
       "id": 9,
       "type": "VHS_LoadVideo",
       "pos": [
-        1551,
-        399
+        1450,
+        596
       ],
       "size": [
         235.1999969482422,
-        491.1999969482422
+        262
       ],
       "flags": {},
-      "order": 1,
+      "order": 0,
       "mode": 0,
       "inputs": [
         {
@@ -231,7 +155,7 @@
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
-            7
+            12
           ],
           "shape": 3,
           "slot_index": 0
@@ -284,164 +208,240 @@
       }
     },
     {
-      "id": 7,
-      "type": "AdvancedLivePortrait",
+      "id": 12,
+      "type": "ExpressionEditor",
       "pos": [
-        1823,
-        301
+        1091,
+        312
       ],
-      "size": [
-        289.7234384275689,
-        513.2487798331999
-      ],
+      "size": {
+        "0": 315,
+        "1": 430
+      },
       "flags": {},
-      "order": 4,
+      "order": 3,
       "mode": 0,
       "inputs": [
         {
-          "name": "src_images",
+          "name": "src_image",
           "type": "IMAGE",
           "link": null
         },
         {
           "name": "motion_link",
           "type": "EDITOR_LINK",
-          "link": 6
+          "link": 10
         },
         {
-          "name": "driving_images",
+          "name": "sample_image",
           "type": "IMAGE",
-          "link": 7
+          "link": null
+        },
+        {
+          "name": "add_exp",
+          "type": "EXP_DATA",
+          "link": null
         }
       ],
       "outputs": [
         {
-          "name": "images",
+          "name": "image",
           "type": "IMAGE",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "motion_link",
+          "type": "EDITOR_LINK",
           "links": [
-            8
+            11
           ],
           "shape": 3,
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "AdvancedLivePortrait"
-      },
-      "widgets_values": [
-        0,
-        0,
-        true,
-        "1 = 1:10\n2 = 5:10\n0 = 2:50\n1 = 2:0"
-      ]
-    },
-    {
-      "id": 10,
-      "type": "VHS_VideoCombine",
-      "pos": [
-        2150,
-        307
-      ],
-      "size": [
-        261.8000000000002,
-        565.8000000000002
-      ],
-      "flags": {},
-      "order": 5,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 8
+          "slot_index": 1
         },
         {
-          "name": "audio",
-          "type": "AUDIO",
-          "link": null
-        },
-        {
-          "name": "meta_batch",
-          "type": "VHS_BatchManager",
-          "link": null
-        },
-        {
-          "name": "vae",
-          "type": "VAE",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "Filenames",
-          "type": "VHS_FILENAMES",
+          "name": "save_exp",
+          "type": "EXP_DATA",
           "links": null,
           "shape": 3
         }
       ],
       "properties": {
-        "Node name for S&R": "VHS_VideoCombine"
+        "Node name for S&R": "ExpressionEditor"
       },
-      "widgets_values": {
-        "frame_rate": 15,
-        "loop_count": 0,
-        "filename_prefix": "AnimateDiff",
-        "format": "video/h264-mp4",
-        "pix_fmt": "yuv420p",
-        "crf": 19,
-        "save_metadata": true,
-        "pingpong": false,
-        "save_output": false,
-        "videopreview": {
-          "hidden": false,
-          "paused": false,
-          "params": {
-            "filename": "AnimateDiff_00003.mp4",
-            "subfolder": "",
-            "type": "temp",
-            "format": "video/h264-mp4",
-            "frame_rate": 15
-          }
+      "widgets_values": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        15,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "type": "LoadImage",
+      "pos": [
+        363,
+        306
+      ],
+      "size": {
+        "0": 315,
+        "1": 314
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            9
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3,
+          "slot_index": 1
         }
-      }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "source_image.png",
+        "image"
+      ]
+    },
+    {
+      "id": 11,
+      "type": "ExpressionEditor",
+      "pos": [
+        738,
+        310
+      ],
+      "size": {
+        "0": 315,
+        "1": 430
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "src_image",
+          "type": "IMAGE",
+          "link": 9
+        },
+        {
+          "name": "motion_link",
+          "type": "EDITOR_LINK",
+          "link": null
+        },
+        {
+          "name": "sample_image",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "add_exp",
+          "type": "EXP_DATA",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "motion_link",
+          "type": "EDITOR_LINK",
+          "links": [
+            10
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "save_exp",
+          "type": "EXP_DATA",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ExpressionEditor"
+      },
+      "widgets_values": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -15,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ]
     }
   ],
   "links": [
     [
-      3,
+      9,
       3,
       0,
-      6,
+      11,
       0,
       "IMAGE"
     ],
     [
-      5,
-      6,
+      10,
+      11,
       1,
-      8,
-      1,
-      "EDITOR_LINK"
-    ],
-    [
-      6,
-      8,
-      1,
-      7,
+      12,
       1,
       "EDITOR_LINK"
     ],
     [
-      7,
+      11,
+      12,
+      1,
+      13,
+      1,
+      "EDITOR_LINK"
+    ],
+    [
+      12,
       9,
       0,
-      7,
+      13,
       2,
       "IMAGE"
     ],
     [
-      8,
-      7,
+      13,
+      13,
       0,
       10,
       0,
@@ -452,10 +452,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.620921323059155,
+      "scale": 0.9090909090909092,
       "offset": [
-        501.16957927340843,
-        325.0434083711576
+        -144.28770787502953,
+        -122.0406967411474
       ]
     }
   },

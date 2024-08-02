@@ -1,6 +1,6 @@
 {
-  "last_node_id": 9,
-  "last_link_id": 8,
+  "last_node_id": 10,
+  "last_link_id": 10,
   "nodes": [
     {
       "id": 5,
@@ -20,7 +20,7 @@
         {
           "name": "src_images",
           "type": "IMAGE",
-          "link": 8
+          "link": 10
         },
         {
           "name": "motion_link",
@@ -64,7 +64,7 @@
       ],
       "size": [
         248.96339416503906,
-        552.9633941650391
+        310
       ],
       "flags": {},
       "order": 4,
@@ -126,124 +126,6 @@
       }
     },
     {
-      "id": 9,
-      "type": "ExpressionEditor",
-      "pos": [
-        932,
-        333
-      ],
-      "size": {
-        "0": 245.65225219726562,
-        "1": 642
-      },
-      "flags": {},
-      "order": 2,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "src_image",
-          "type": "IMAGE",
-          "link": 7
-        },
-        {
-          "name": "motion_link",
-          "type": "EDITOR_LINK",
-          "link": null
-        },
-        {
-          "name": "sample_image",
-          "type": "IMAGE",
-          "link": null
-        },
-        {
-          "name": "add_exp",
-          "type": "EXP_DATA",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "links": [
-            8
-          ],
-          "shape": 3,
-          "slot_index": 0
-        },
-        {
-          "name": "motion_link",
-          "type": "EDITOR_LINK",
-          "links": null,
-          "shape": 3
-        },
-        {
-          "name": "save_exp",
-          "type": "EXP_DATA",
-          "links": null,
-          "shape": 3
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ExpressionEditor"
-      },
-      "widgets_values": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1.3,
-        1,
-        1
-      ]
-    },
-    {
-      "id": 3,
-      "type": "LoadImage",
-      "pos": [
-        689,
-        328
-      ],
-      "size": {
-        "0": 210,
-        "1": 314
-      },
-      "flags": {},
-      "order": 0,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            7
-          ],
-          "shape": 3,
-          "slot_index": 0
-        },
-        {
-          "name": "MASK",
-          "type": "MASK",
-          "links": null,
-          "shape": 3
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "LoadImage"
-      },
-      "widgets_values": [
-        "source_image.png",
-        "image"
-      ]
-    },
-    {
       "id": 6,
       "type": "VHS_LoadVideo",
       "pos": [
@@ -252,10 +134,10 @@
       ],
       "size": [
         235.1999969482422,
-        491.1999969482422
+        262
       ],
       "flags": {},
-      "order": 1,
+      "order": 0,
       "mode": 0,
       "inputs": [
         {
@@ -325,6 +207,124 @@
           }
         }
       }
+    },
+    {
+      "id": 10,
+      "type": "ExpressionEditor",
+      "pos": [
+        790,
+        339
+      ],
+      "size": {
+        "0": 315,
+        "1": 430
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "src_image",
+          "type": "IMAGE",
+          "link": 9
+        },
+        {
+          "name": "motion_link",
+          "type": "EDITOR_LINK",
+          "link": null
+        },
+        {
+          "name": "sample_image",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "add_exp",
+          "type": "EXP_DATA",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            10
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "motion_link",
+          "type": "EDITOR_LINK",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "save_exp",
+          "type": "EXP_DATA",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ExpressionEditor"
+      },
+      "widgets_values": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "type": "LoadImage",
+      "pos": [
+        470,
+        340
+      ],
+      "size": {
+        "0": 210,
+        "1": 314
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            9
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "source_image.png",
+        "image"
+      ]
     }
   ],
   "links": [
@@ -345,16 +345,16 @@
       "IMAGE"
     ],
     [
-      7,
+      9,
       3,
       0,
-      9,
+      10,
       0,
       "IMAGE"
     ],
     [
-      8,
-      9,
+      10,
+      10,
       0,
       5,
       0,
@@ -365,10 +365,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.8264462809917354,
+      "scale": 0.9090909090909091,
       "offset": [
-        245.85866448431153,
-        197.69871165469377
+        60.63159946091349,
+        84.44973344282295
       ]
     }
   },

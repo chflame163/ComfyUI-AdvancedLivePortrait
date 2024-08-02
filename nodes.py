@@ -19,10 +19,10 @@ from scipy.spatial.transform import Rotation as R
 current_file_path = os.path.abspath(__file__)
 current_directory = os.path.dirname(current_file_path)
 sys.path.append(current_directory)
-from LivePortrait.src.live_portrait_wrapper import LivePortraitWrapper
-from LivePortrait.src.utils.rprint import rlog as log
-from LivePortrait.src.utils.camera import get_rotation_matrix
-from LivePortrait.src.config.inference_config import InferenceConfig
+from .LivePortrait.src.live_portrait_wrapper import LivePortraitWrapper
+from .LivePortrait.src.utils.rprint import rlog as log
+from .LivePortrait.src.utils.camera import get_rotation_matrix
+from .config.inference_config import InferenceConfig
 
 def tensor2pil(image):
     return Image.fromarray(np.clip(255. * image.cpu().numpy().squeeze(), 0, 255).astype(np.uint8))
@@ -328,7 +328,7 @@ class SaveExpData:
     RETURN_TYPES = ("STRING",)
     RETURN_NAMES = ("file_name",)
     FUNCTION = "run"
-    CATEGORY = "파워집돌이"
+    CATEGORY = "AdvancedLivePortrait"
     OUTPUT_NODE = True
 
     def run(self, file_name, save_exp:ExpressionSet=None):
@@ -353,7 +353,7 @@ class LoadExpData:
     RETURN_TYPES = ("EXP_DATA",)
     RETURN_NAMES = ("exp",)
     FUNCTION = "run"
-    CATEGORY = "파워집돌이"
+    CATEGORY = "AdvancedLivePortrait"
 
     def run(self, file_name, ratio):
         # es = ExpressionSet()
@@ -368,15 +368,15 @@ class ExpData:
         return {"required":{
                 #"code": ("STRING", {"multiline": False, "default": ""}),
                 "code1": ("INT", {"default": 0}),
-                "value1": ("FLOAT", {"default": 0, "min": -100, "max": 100, "step": 0.1}),
+                "value1": ("FLOAT", {"default": 0, "min": -100, "max": 100, "step": 0.1, "display": "slider"}),
                 "code2": ("INT", {"default": 0}),
-                "value2": ("FLOAT", {"default": 0, "min": -100, "max": 100, "step": 0.1}),
+                "value2": ("FLOAT", {"default": 0, "min": -100, "max": 100, "step": 0.1, "display": "slider"}),
                 "code3": ("INT", {"default": 0}),
-                "value3": ("FLOAT", {"default": 0, "min": -100, "max": 100, "step": 0.1}),
+                "value3": ("FLOAT", {"default": 0, "min": -100, "max": 100, "step": 0.1, "display": "slider"}),
                 "code4": ("INT", {"default": 0}),
-                "value4": ("FLOAT", {"default": 0, "min": -100, "max": 100, "step": 0.1}),
+                "value4": ("FLOAT", {"default": 0, "min": -100, "max": 100, "step": 0.1, "display": "slider"}),
                 "code5": ("INT", {"default": 0}),
-                "value5": ("FLOAT", {"default": 0, "min": -100, "max": 100, "step": 0.1}),
+                "value5": ("FLOAT", {"default": 0, "min": -100, "max": 100, "step": 0.1, "display": "slider"}),
             },
             "optional":{"add_exp": ("EXP_DATA",),}
         }
@@ -384,7 +384,7 @@ class ExpData:
     RETURN_TYPES = ("EXP_DATA",)
     RETURN_NAMES = ("exp",)
     FUNCTION = "run"
-    CATEGORY = "파워집돌이"
+    CATEGORY = "AdvancedLivePortrait"
 
     def run(self, code1, value1, code2, value2, code3, value3, code4, value4, code5, value5, add_exp=None):
         #print(f"type(None):{type(None)}")
@@ -418,7 +418,7 @@ class PrintExpData:
     RETURN_TYPES = ("EXP_DATA",)
     RETURN_NAMES = ("exp",)
     FUNCTION = "run"
-    CATEGORY = "파워집돌이"
+    CATEGORY = "AdvancedLivePortrait"
     OUTPUT_NODE = True
 
     def run(self, cut_noise, exp = None):
@@ -451,8 +451,8 @@ class AdvancedLivePortrait:
 
         return {
             "required": {
-                "retargeting_eyes": ("FLOAT", {"default": 0, "min": 0, "max": 1, "step": 0.01}),
-                "retargeting_mouth": ("FLOAT", {"default": 0, "min": 0, "max": 1, "step": 0.01}),
+                "retargeting_eyes": ("FLOAT", {"default": 0, "min": 0, "max": 1, "step": 0.01, "display": "slider"}),
+                "retargeting_mouth": ("FLOAT", {"default": 0, "min": 0, "max": 1, "step": 0.01, "display": "slider"}),
                 "turn_on": ("BOOLEAN", {"default": True}),
                 "command": ("STRING", {"multiline": True, "default": ""}),
             },
@@ -467,7 +467,7 @@ class AdvancedLivePortrait:
     RETURN_NAMES = ("images",)
     FUNCTION = "run"
     OUTPUT_NODE = True
-    CATEGORY = "파워집돌이"
+    CATEGORY = "AdvancedLivePortrait"
 
     # INPUT_IS_LIST = False
     # OUTPUT_IS_LIST = (False,)
@@ -497,7 +497,7 @@ class AdvancedLivePortrait:
                 keep = int(cmds[1])
             except:
                 #log(f"(파워집돌이) 명령어오류 {i}번줄: {line}")
-                assert False, f"(파워집돌이) 명령어오류 {i}번줄: {line}"
+                assert False, f"(Superuser) Command Error {i} index: {line}"
 
 
                 return None, None
@@ -627,22 +627,22 @@ class ExpressionEditor:
         return {
             "required": {
 
-                "rotate_pitch": ("FLOAT", {"default": 0, "min": -20, "max": 20, "step": 0.5, "display": display}),
-                "rotate_yaw": ("FLOAT", {"default": 0, "min": -20, "max": 20, "step": 0.5, "display": display}),
-                "rotate_roll": ("FLOAT", {"default": 0, "min": -20, "max": 20, "step": 0.5, "display": display}),
+                "rotate_pitch": ("FLOAT", {"default": 0, "min": -20, "max": 20, "step": 0.5, "display": "slider"}),
+                "rotate_yaw": ("FLOAT", {"default": 0, "min": -20, "max": 20, "step": 0.5, "display": "slider"}),
+                "rotate_roll": ("FLOAT", {"default": 0, "min": -20, "max": 20, "step": 0.5, "display": "slider"}),
 
-                "blink": ("FLOAT", {"default": 0, "min": -20, "max": 5, "step": 0.5, "display": display}),
-                "eyebrow": ("FLOAT", {"default": 0, "min": -10, "max": 15, "step": 0.5, "display": display}),
-                "wink": ("FLOAT", {"default": 0, "min": 0, "max": 25, "step": 0.5, "display": display}),
-                "pupil_x": ("FLOAT", {"default": 0, "min": -15, "max": 15, "step": 0.5, "display": display}),
-                "pupil_y": ("FLOAT", {"default": 0, "min": -15, "max": 15, "step": 0.5, "display": display}),
-                "aaa": ("FLOAT", {"default": 0, "min": -30, "max": 120, "step": 1, "display": display}),
-                "eee": ("FLOAT", {"default": 0, "min": -20, "max": 15, "step": 0.2, "display": display}),
-                "woo": ("FLOAT", {"default": 0, "min": -20, "max": 15, "step": 0.2, "display": display}),
-                "smile": ("FLOAT", {"default": 0, "min": -0.3, "max": 1.3, "step": 0.01, "display": display}),
+                "blink": ("FLOAT", {"default": 0, "min": -20, "max": 5, "step": 0.5, "display": "slider"}),
+                "eyebrow": ("FLOAT", {"default": 0, "min": -10, "max": 15, "step": 0.5, "display": "slider"}),
+                "wink": ("FLOAT", {"default": 0, "min": 0, "max": 25, "step": 0.5, "display": "slider"}),
+                "pupil_x": ("FLOAT", {"default": 0, "min": -15, "max": 15, "step": 0.5, "display": "slider"}),
+                "pupil_y": ("FLOAT", {"default": 0, "min": -15, "max": 15, "step": 0.5, "display": "slider"}),
+                "aaa": ("FLOAT", {"default": 0, "min": -30, "max": 120, "step": 1, "display": "slider"}),
+                "eee": ("FLOAT", {"default": 0, "min": -20, "max": 15, "step": 0.2, "display": "slider"}),
+                "woo": ("FLOAT", {"default": 0, "min": -20, "max": 15, "step": 0.2, "display": "slider"}),
+                "smile": ("FLOAT", {"default": 0, "min": -0.3, "max": 1.3, "step": 0.01, "display": "slider"}),
 
-                "src_ratio": ("FLOAT", {"default": 1, "min": 0, "max": 1, "step": 0.01, "display": display}),
-                "sample_ratio": ("FLOAT", {"default": 1, "min": 0, "max": 1, "step": 0.01, "display": display}),
+                "src_ratio": ("FLOAT", {"default": 1, "min": 0, "max": 1, "step": 0.01, "display": "slider"}),
+                "sample_ratio": ("FLOAT", {"default": 1, "min": 0, "max": 1, "step": 0.01, "display": "slider"}),
             },
 
             "optional": {"src_image": ("IMAGE",), "motion_link": ("EDITOR_LINK",),
@@ -657,7 +657,7 @@ class ExpressionEditor:
 
     OUTPUT_NODE = True
 
-    CATEGORY = "파워집돌이"
+    CATEGORY = "AdvancedLivePortrait"
 
     # INPUT_IS_LIST = False
     # OUTPUT_IS_LIST = (False,)
@@ -734,29 +734,7 @@ class ExpressionEditor:
 
         return {"ui": {"images": results}, "result": (out_img, new_editor_link, es)}
 
-class TestNode:
 
-    def __init__(s):
-        s.pbar = comfy.utils.ProgressBar(1)
-
-    @classmethod
-    def INPUT_TYPES(s):
-        return {"required": {
-            #"images": ("IMAGE",),
-            #"test_value": ("INT", {"default": 1, "min": 1}),
-            "command": ("STRING", {"multiline": True, "default": ""}),
-        },
-        }
-
-    RETURN_TYPES = ("IMAGE",)
-    RETURN_NAMES = ("images",)
-    FUNCTION = "run"
-    OUTPUT_NODE = True
-
-    def run(self, command):
-        self.parsing_command(command)
-
-        return (None,)
 
 NODE_CLASS_MAPPINGS = {
     "AdvancedLivePortrait": AdvancedLivePortrait,
@@ -765,10 +743,10 @@ NODE_CLASS_MAPPINGS = {
     "LoadExpData": LoadExpData,
     "SaveExpData": SaveExpData,
     "PrintExpData:": PrintExpData,
-    #"TestNode": TestNode,
+
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "AdvancedLivePortrait": "Advanced Live Portrait (파워집돌이)",
-    "ExpressionEditor": "Expression Editor (파워집돌이)",
+    "AdvancedLivePortrait": "Advanced Live Portrait",
+    "ExpressionEditor": "Expression Editor",
 }
